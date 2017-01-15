@@ -18,6 +18,7 @@ import com.eclipsesource.json.JsonValue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -94,7 +95,21 @@ public class JsonItemPresetFactory implements ItemPresetFactory {
       }
       if (preset.hasTag(Item.Tag.DRINKABLE)) {
         preset.setDrinkableDoses(itemObject.get("drinkableDoses").asInt());
-        preset.setDrinkableHealing(itemObject.get("drinkableHealing").asInt());
+        for (JsonValue effectValue : itemObject.get("drinkableEffects").asArray()) {
+          JsonArray effectArray = effectValue.asArray();
+          List<JsonValue> values = effectArray.values();
+          Id effectId = new Id(values.get(0).asString());
+          List<String> effectParameters = new ArrayList<>();
+          for (int i = 1; i < values.size(); i++) {
+            if (values.get(i).isString()) {
+              // Calling toString() makes a JSON String, which includes the quotation marks.
+              effectParameters.add(values.get(i).asString());
+            } else {
+              effectParameters.add(values.get(i).toString());
+            }
+          }
+          preset.addDrinkableEffect(effectId, effectParameters);
+        }
         preset.setIntegrityDecrementPerDose(itemObject.get("integrityDecrementPerDose").asInt());
       }
       if (itemObject.get("spell") != null) {

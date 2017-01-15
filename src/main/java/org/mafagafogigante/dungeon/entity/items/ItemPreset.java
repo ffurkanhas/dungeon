@@ -5,6 +5,8 @@ import org.mafagafogigante.dungeon.entity.Luminosity;
 import org.mafagafogigante.dungeon.entity.Preset;
 import org.mafagafogigante.dungeon.entity.TagSet;
 import org.mafagafogigante.dungeon.entity.Weight;
+import org.mafagafogigante.dungeon.entity.creatures.Effect;
+import org.mafagafogigante.dungeon.entity.creatures.EffectFactory;
 import org.mafagafogigante.dungeon.entity.items.Item.Tag;
 import org.mafagafogigante.dungeon.game.Id;
 import org.mafagafogigante.dungeon.game.Name;
@@ -12,6 +14,8 @@ import org.mafagafogigante.dungeon.io.Version;
 import org.mafagafogigante.dungeon.util.Percentage;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Stores the information about an item that the factory may need to create it.
@@ -36,8 +40,8 @@ public final class ItemPreset implements Preset, Serializable {
   private String text;
   private long putrefactionPeriod;
   private boolean unique;
-  private int drinkableHealing;
   private int drinkableDoses;
+  private final List<Effect> drinkableEffects = new ArrayList<>();
   private int integrityDecrementPerDose;
 
   public TagSet<Item.Tag> getTagSet() {
@@ -50,6 +54,14 @@ public final class ItemPreset implements Preset, Serializable {
 
   public void addTag(Item.Tag tag) {
     getTagSet().addTag(tag);
+  }
+
+  public List<Effect> getDrinkableEffects() {
+    return drinkableEffects;
+  }
+
+  public void addDrinkableEffect(Id effectId, List<String> effectParameters) {
+    drinkableEffects.add(EffectFactory.getDefaultFactory().getEffect(effectId, effectParameters));
   }
 
   public Id getId() {
@@ -188,14 +200,6 @@ public final class ItemPreset implements Preset, Serializable {
 
   public void setIntegrityDecrementPerDose(int integrityDecrementPerDose) {
     this.integrityDecrementPerDose = integrityDecrementPerDose;
-  }
-
-  public int getDrinkableHealing() {
-    return drinkableHealing;
-  }
-
-  public void setDrinkableHealing(int healing) {
-    this.drinkableHealing = healing;
   }
 
   public int getDrinkableDoses() {
