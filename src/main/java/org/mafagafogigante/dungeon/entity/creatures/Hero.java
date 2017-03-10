@@ -301,22 +301,61 @@ public class Hero extends Creature {
     if (canSeeAnItem()) {
       List<Item> selectedItems = selectLocationItems(arguments);
       for (Item item : selectedItems) {
-        final SimulationResult result = getInventory().simulateItemAddition(item);
-        // We stop adding items as soon as we hit the first one which would exceed the amount or weight limit.
-        if (result == SimulationResult.AMOUNT_LIMIT) {
-          Writer.write("Your inventory is full.");
-          break;
-        } else if (result == SimulationResult.WEIGHT_LIMIT) {
-          Writer.write("You can't carry more weight.");
-          // This may not be ideal, as there may be a selection which has lighter items after this item.
-          break;
-        } else if (result == SimulationResult.SUCCESSFUL) {
-          Engine.rollDateAndRefresh(SECONDS_TO_PICK_UP_AN_ITEM);
-          if (getLocation().getInventory().hasItem(item)) {
-            getLocation().removeItem(item);
-            addItem(item);
-          } else {
-            HeroUtils.writeNoLongerInLocationMessage(item);
+        if (item.getName().toString().equalsIgnoreCase("wood")) {
+          Writer.write("You can't pick the wood, you should cut");
+        } else {
+          final SimulationResult result = getInventory().simulateItemAddition(item);
+          // We stop adding items as soon as we hit the first one which would exceed the amount or weight limit.
+          if (result == SimulationResult.AMOUNT_LIMIT) {
+            Writer.write("Your inventory is full.");
+            break;
+          } else if (result == SimulationResult.WEIGHT_LIMIT) {
+            Writer.write("You can't carry more weight.");
+            // This may not be ideal, as there may be a selection which has lighter items after this item.
+            break;
+          } else if (result == SimulationResult.SUCCESSFUL) {
+            Engine.rollDateAndRefresh(SECONDS_TO_PICK_UP_AN_ITEM);
+            if (getLocation().getInventory().hasItem(item)) {
+              getLocation().removeItem(item);
+              addItem(item);
+            } else {
+              HeroUtils.writeNoLongerInLocationMessage(item);
+            }
+          }
+        }
+      }
+    } else {
+      Writer.write("You do not see any item you could pick up.");
+    }
+  }
+
+  /**
+   * Attempts to cut wood from the current location.
+   */
+  public void cut(String[] arguments) {
+    if (canSeeAnItem()) {
+      List<Item> selectedItems = selectLocationItems(arguments);
+      for (Item item : selectedItems) {
+        if (!item.getName().toString().equalsIgnoreCase("wood")) {
+          Writer.write("You can just cut wood");
+        } else {
+          final SimulationResult result = getInventory().simulateItemAddition(item);
+          // We stop adding items as soon as we hit the first one which would exceed the amount or weight limit.
+          if (result == SimulationResult.AMOUNT_LIMIT) {
+            Writer.write("Your inventory is full.");
+            break;
+          } else if (result == SimulationResult.WEIGHT_LIMIT) {
+            Writer.write("You can't carry more weight.");
+            // This may not be ideal, as there may be a selection which has lighter items after this item.
+            break;
+          } else if (result == SimulationResult.SUCCESSFUL) {
+            Engine.rollDateAndRefresh(SECONDS_TO_PICK_UP_AN_ITEM);
+            if (getLocation().getInventory().hasItem(item)) {
+              getLocation().removeItem(item);
+              addItem(item);
+            } else {
+              HeroUtils.writeNoLongerInLocationMessage(item);
+            }
           }
         }
       }

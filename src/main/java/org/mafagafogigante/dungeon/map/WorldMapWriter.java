@@ -13,7 +13,7 @@ public final class WorldMapWriter {
   }
 
   public static void writeMap() {
-    renderMap(WorldMap.makeWorldMap(getMapRows(), getMapColumns(), false));
+    renderMap(WorldMap.makeWorldMap(getMapRows(), getMapColumns(), true));
   }
 
   public static void writeDebugMap() {

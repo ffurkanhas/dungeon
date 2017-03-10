@@ -82,10 +82,22 @@ final class CommandSets {
         Game.getGameState().getHero().printAge();
       }
     });
+    commandSet.addCommand(new Command("build", "Builds house if you have enough wood.") {
+      @Override
+      public void execute(@NotNull String[] arguments) {
+        Game.getGameState().getHero().walk(arguments);
+      }
+    });
     commandSet.addCommand(new Command("cast", "Casts a spell.") {
       @Override
       public void execute(@NotNull String[] arguments) {
         Game.getGameState().getHero().getSpellcaster().parseCast(arguments);
+      }
+    });
+    commandSet.addCommand(new Command("cut", "Cuts the wood when you are at forest") {
+      @Override
+      public void execute(@NotNull String[] arguments) {
+        Game.getGameState().getHero().cut(arguments);
       }
     });
     commandSet.addCommand(new Command("destroy", "Destroys items on the ground.") {

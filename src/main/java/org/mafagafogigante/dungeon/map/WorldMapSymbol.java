@@ -12,6 +12,7 @@ import java.awt.Color;
 class WorldMapSymbol {
 
   private static final WorldMapSymbol HERO_SYMBOL = new WorldMapSymbol('@', Color.WHITE);
+  private static final WorldMapSymbol HOME_SYMBOL = new WorldMapSymbol('#', Color.WHITE);
   private static final WorldMapSymbol NOT_YET_GENERATED_SYMBOL = new WorldMapSymbol('~', Color.GRAY);
 
   private final String character;
@@ -28,6 +29,10 @@ class WorldMapSymbol {
 
   public static WorldMapSymbol getHeroSymbol() {
     return HERO_SYMBOL;
+  }
+
+  public static WorldMapSymbol getHomeSymbol() {
+    return HOME_SYMBOL;
   }
 
   public static WorldMapSymbol getNotYetGeneratedSymbol() {

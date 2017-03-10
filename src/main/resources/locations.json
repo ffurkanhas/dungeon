@@ -33,6 +33,26 @@
       ]
     },
     {
+      "id": "HOME",
+      "type": "HOME",
+      "name": {
+        "singular": "Home"
+      },
+      "color": [
+        120,
+        18,
+        0
+      ],
+      "symbol": "#",
+      "info": "Home,home,sweet home.",
+      "blobSize": 1,
+      "lightPermittivity": 1,
+      "blockedEntrances": [
+        "U",
+        "D"
+      ]
+    },
+    {
       "id": "TIMBER_BRIDGE",
       "type": "BRIDGE",
       "name": {
@@ -644,6 +664,10 @@
         {
           "id": "SWORD",
           "probability": 0.15
+        },
+        {
+          "id": "WOOD",
+          "probability": 1
         },
         {
           "id": "TOME_OF_HEAL",
