@@ -22,6 +22,29 @@
       "luminosity": "40.00%"
     },
     {
+      "id": "WOOD",
+      "type": "Tool",
+      "name": {
+        "singular": "Wood",
+        "plural": "Woods"
+      },
+      "tags": [
+        "WEAPON",
+        "DECOMPOSES",
+        "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
+      ],
+      "integrity": {
+        "current": 200,
+        "maximum": 200
+      },
+      "weight": 0.20,
+      "visibility": "100.00%",
+      "decompositionPeriod": "200 days",
+      "damage": 10,
+      "hitRate": "60.00%",
+      "integrityDecrementOnHit": 8
+    },
+    {
       "id": "APPLE",
       "type": "Food",
       "name": {
