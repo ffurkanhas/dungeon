@@ -540,14 +540,6 @@
           "delay": 8
         },
         {
-          "id": "EVIL",
-          "population": {
-            "minimum": 1,
-            "maximum": 3
-          },
-          "delay": 2
-        },
-        {
           "id": "GIANT_RAT",
           "population": {
             "minimum": 1,

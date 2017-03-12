@@ -378,7 +378,30 @@ public class Hero extends Creature {
       Writer.write("You do not see any item you could pick up.");
     }
   }
+/** 
+  *Getting hint method for Master item.
+*/
+  public void hint(String[] arguments) {
+List<Item> selectedItems = selectLocationItems(arguments);
+      for (Item item : selectedItems) {
+        if (item.getName().toString().equalsIgnoreCase("fire")) {
+          Writer.write("one");
+        }
+        if (item.getName().toString().equalsIgnoreCase("diamond")) {
+          Writer.write("two");
+        }
+        if (item.getName().toString().equalsIgnoreCase("gold")) {
+          Writer.write("three");
+        }  
+        if (item.getName().toString().equalsIgnoreCase("water")) {
+          Writer.write("four");
+        } 
+        if (item.getName().toString().equalsIgnoreCase("sand")) {
+          Writer.write("five");
+        }
+       }
 
+   }
   /**
    * Adds an Item object to the inventory. As a precondition, simulateItemAddition(Item) should return SUCCESSFUL.
    *

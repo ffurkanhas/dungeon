@@ -375,29 +375,6 @@
       "attackAlgorithmID": "SIMPLE"
     },
     {
-      "id": "EVIL",
-      "type": "Beast",
-      "name": {
-        "singular": "Evil",
-        "plural": "Evils"
-      },
-      "tags": [
-        "CORPSE"
-      ],
-      "drops": [
-        ["GOLD", 0.3],
-        ["DIAMOND", 0.3],
-	["SAND", 0.3],
-	["FIRE", 0.3],
-	["WATER", 0.3]
-      ],
-      "visibility": "100%",
-      "weight": 50.0,
-      "health": 30,
-      "attack": 11,
-      "attackAlgorithmID": "SIMPLE"
-    },
-    {
       "id": "WHITE_TIGER",
       "type": "Beast",
       "name": {

@@ -152,7 +152,7 @@
     {
       "title": "Weather",
       "content": "The weather changes with the passing of time. There are five weather conditions on the game: clear, cloudy, overcast, rain, and storm. The character is intelligent enough to know how to handle bad weather and is not hindered by it."
-    },
+    }
     {
       "title": "Master",
       "content": "The master item is the most valuable item in this game.You have to pick it's subitems.Every subitem will give you a charachter and you have to get a key with this charachter.Then,write this key as a command and get Master."
