@@ -665,6 +665,18 @@
           "id": "SWORD",
           "probability": 0.15
         },
+<<<<<<< HEAD
+=======
+	{
+          "id": "REGENERATION_POTION",
+          "probability": 0.7
+	},
+
+	{
+	   "id": "DAMAGEBOOST_POTION",
+	   "probability": 0.7
+	},
+>>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
         {
           "id": "WOOD",
           "probability": 1
@@ -765,6 +777,14 @@
           "id": "TOME_OF_VEIL_OF_DARKNESS",
           "probability": 0.05
         },
+<<<<<<< HEAD
+=======
+
+	{
+	   "id": "DAMAGEBOOST_POTION",
+	   "probability": 0.7
+			},
+>>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
         {
           "id": "DAGGER_OF_INFINITY",
           "probability": 0.05

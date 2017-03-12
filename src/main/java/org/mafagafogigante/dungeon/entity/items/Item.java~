@@ -55,7 +55,7 @@ public final class Item extends Entity {
       int integrityDecrementPerDose = preset.getIntegrityDecrementPerDose();
       int drinkableDoses = preset.getDrinkableDoses();
       int effectTime = preset.getEffectTime();
-      drinkableComponent = new DrinkableComponent(effect, integrityDecrementPerDose, drinkableDoses, effectTime);
+      drinkableComponent = new DrinkableComponent(effect, integrityDecrementPerDose, drinkableDoses);
     }
     if (hasTag(Tag.CLOCK)) {
       clockComponent = new ClockComponent(this);

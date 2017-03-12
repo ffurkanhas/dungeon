@@ -68,7 +68,10 @@ public class Hero extends Creature {
   private final Spellcaster spellcaster = new HeroSpellcaster(this);
   private final AchievementTracker achievementTracker;
   private final Date dateOfBirth;
-
+  public boolean regenity = false;
+  public int regenNumber = 0;
+  public String effectType = "";
+  
   Hero(CreaturePreset preset, AchievementTracker achievementTracker, Date dateOfBirth) {
     super(preset);
     this.achievementTracker = achievementTracker;
@@ -519,7 +522,34 @@ public class Hero extends Creature {
             } else {
               Writer.write("You drank a dose of " + selectedItem.getName() + ".");
             }
-            addHealth(component.getEffect().getHealing());
+ 
+            if (regenity == true) {
+              regenity = true;
+              Writer.write("You already used potion");
+            } else {
+              if (selectedItem.getName().toString().equalsIgnoreCase("Regeneration Potion")) {
+                //int oneDay=DungeonTimeUnit.DAY.milliseconds;
+                //while (!(oneDay <0)) {
+                regenity = true;
+                regenNumber = component.getEffectTime();
+                effectType = "Regeneration Potion";
+                addHealth(11);
+                Writer.write("its first effectTime " + component.getEffectTime());
+                component.decrementEffect();
+                Writer.write("its second effectTime " + component.getEffectTime());
+              }
+              if (selectedItem.getName().toString().equalsIgnoreCase("Health Potion")) {
+                addHealth(component.getEffect().getHealing());
+              }
+              if (selectedItem.getName().toString().equalsIgnoreCase("Boost Potion")) {
+                regenity = true;
+                regenNumber = component.getEffectTime();
+                effectType = "Boost Potion";
+                setAttack(5);
+              
+              }
+            }
+
           } else {
             Writer.write("This item is depleted.");
           }
@@ -689,6 +719,8 @@ public class Hero extends Creature {
     string.append(" old");
     string.append(".\n");
     string.append("You are ");
+    string.append("Your health is ");
+    string.append(getHealth().toString());
     string.append(getHealth().getHealthState().toString().toLowerCase(Locale.ENGLISH));
     string.append(".\n");
     string.append("Your base attack is ");
@@ -753,6 +785,21 @@ public class Hero extends Creature {
    */
   public void walk(String[] arguments) {
     walker.parseHeroWalk(arguments);
+    if (regenNumber > 0 && regenity == true) {
+      if (effectType.equals("Regeneration Potion")) {
+        addHealth(11);
+        regenNumber --;
+      }
+      if (effectType.equals("Boost Potion")) {
+        regenNumber --;
+        if (regenNumber == 0 && regenity == true) {
+          setAttack(-5);
+        }
+      }
+    }
+    if (regenNumber <= 0) {
+      regenity = false;
+    }
   }
 
   /**
