@@ -33,6 +33,26 @@
       ]
     },
     {
+      "id": "HOME",
+      "type": "HOME",
+      "name": {
+        "singular": "Home"
+      },
+      "color": [
+        120,
+        18,
+        0
+      ],
+      "symbol": "#",
+      "info": "Home,home,sweet home.",
+      "blobSize": 1,
+      "lightPermittivity": 1,
+      "blockedEntrances": [
+        "U",
+        "D"
+      ]
+    },
+    {
       "id": "TIMBER_BRIDGE",
       "type": "BRIDGE",
       "name": {
@@ -645,10 +665,19 @@
           "id": "SWORD",
           "probability": 0.15
         },
-			{
-			  "id": "REGEN_POTION",
-			  "probability": 0.15
-			},
+	{
+          "id": "REGENERATION_POTION",
+          "probability": 0.7
+	},
+
+	{
+	   "id": "DAMAGEBOOST_POTION",
+	   "probability": 0.7
+	},
+        {
+          "id": "WOOD",
+          "probability": 1
+        },
         {
           "id": "TOME_OF_HEAL",
           "probability": 0.1
@@ -745,6 +774,11 @@
           "id": "TOME_OF_VEIL_OF_DARKNESS",
           "probability": 0.05
         },
+
+	{
+	   "id": "DAMAGEBOOST_POTION",
+	   "probability": 0.7
+			},
         {
           "id": "DAGGER_OF_INFINITY",
           "probability": 0.05

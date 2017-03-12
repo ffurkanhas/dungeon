@@ -22,6 +22,29 @@
       "luminosity": "40.00%"
     },
     {
+      "id": "WOOD",
+      "type": "Tool",
+      "name": {
+        "singular": "Wood",
+        "plural": "Woods"
+      },
+      "tags": [
+        "WEAPON",
+        "DECOMPOSES",
+        "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
+      ],
+      "integrity": {
+        "current": 200,
+        "maximum": 200
+      },
+      "weight": 0.20,
+      "visibility": "100.00%",
+      "decompositionPeriod": "200 days",
+      "damage": 10,
+      "hitRate": "60.00%",
+      "integrityDecrementOnHit": 8
+    },
+    {
       "id": "APPLE",
       "type": "Food",
       "name": {
@@ -220,13 +243,14 @@
       "integrityDecrementOnHit": 5,
       "drinkableDoses": 2,
       "drinkableHealing": 10,
-      "integrityDecrementPerDose": 5
+      "integrityDecrementPerDose": 5,
+      "effectTime" : 1
     },
 		    {
-		      "id": "REGEN_POTION",
+		      "id": "REGENERATION_POTION",
 		      "type": "Potion",
 		      "name": {
-			"singular": "Healing Regeneration Potion"
+			"singular": "Regeneration Potion"
 		      },
 		      "tags": [
 			"WEAPON",
@@ -234,17 +258,43 @@
 			"WEIGHT_PROPORTIONAL_TO_INTEGRITY"
 		      ],
 		      "integrity": {
-			"current": 11,
-			"maximum": 11
+			"current": 100,
+			"maximum": 100
 		      },
 		      "weight": 0.1,
-		      "visibility": "15.00%",
+		      "visibility": "95.00%",
 		      "damage": 4,
 		      "hitRate": "50.00%",
 		      "integrityDecrementOnHit": 5,
 		      "drinkableDoses": 2,
 		      "drinkableHealing": 10,
-		      "integrityDecrementPerDose": 5
+		      "integrityDecrementPerDose": 5,
+                      "effectTime": 5
+		    },
+		   {
+		      "id": "DAMAGEBOOST_POTION",
+		      "type": "Potion",
+		      "name": {
+			"singular": "Boost Potion"
+		      },
+		      "tags": [
+			"WEAPON",
+			"DRINKABLE",
+			"WEIGHT_PROPORTIONAL_TO_INTEGRITY"
+		      ],
+		      "integrity": {
+			"current": 100,
+			"maximum": 100
+		      },
+		      "weight": 0.1,
+		      "visibility": "95.00%",
+		      "damage": 4,
+		      "hitRate": "50.00%",
+		      "integrityDecrementOnHit": 5,
+		      "drinkableDoses": 2,
+		      "drinkableHealing": 10,
+		      "integrityDecrementPerDose": 5,
+                      "effectTime": 8
 		    },
     {
       "id": "HEALING_DRAUGHT",

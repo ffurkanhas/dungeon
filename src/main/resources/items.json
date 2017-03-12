@@ -243,13 +243,14 @@
       "integrityDecrementOnHit": 5,
       "drinkableDoses": 2,
       "drinkableHealing": 10,
-      "integrityDecrementPerDose": 5
+      "integrityDecrementPerDose": 5,
+      "effectTime" : 1
     },
 		    {
-		      "id": "REGEN_POTION",
+		      "id": "REGENERATION_POTION",
 		      "type": "Potion",
 		      "name": {
-			"singular": "Healing Regeneration Potion"
+			"singular": "Regeneration Potion"
 		      },
 		      "tags": [
 			"WEAPON",
@@ -257,17 +258,43 @@
 			"WEIGHT_PROPORTIONAL_TO_INTEGRITY"
 		      ],
 		      "integrity": {
-			"current": 11,
-			"maximum": 11
+			"current": 100,
+			"maximum": 100
 		      },
 		      "weight": 0.1,
-		      "visibility": "15.00%",
+		      "visibility": "95.00%",
 		      "damage": 4,
 		      "hitRate": "50.00%",
 		      "integrityDecrementOnHit": 5,
 		      "drinkableDoses": 2,
 		      "drinkableHealing": 10,
-		      "integrityDecrementPerDose": 5
+		      "integrityDecrementPerDose": 5,
+          "effectTime": 5
+		    },
+		   {
+		      "id": "DAMAGEBOOST_POTION",
+		      "type": "Potion",
+		      "name": {
+			"singular": "Boost Potion"
+		      },
+		      "tags": [
+			"WEAPON",
+			"DRINKABLE",
+			"WEIGHT_PROPORTIONAL_TO_INTEGRITY"
+		      ],
+		      "integrity": {
+			"current": 100,
+			"maximum": 100
+		      },
+		      "weight": 0.1,
+		      "visibility": "95.00%",
+		      "damage": 4,
+		      "hitRate": "50.00%",
+		      "integrityDecrementOnHit": 5,
+		      "drinkableDoses": 2,
+		      "drinkableHealing": 10,
+		      "integrityDecrementPerDose": 5,
+          "effectTime": 8
 		    },
     {
       "id": "HEALING_DRAUGHT",
@@ -291,7 +318,8 @@
       "integrityDecrementOnHit": 5,
       "drinkableDoses": 4,
       "drinkableHealing": 10,
-      "integrityDecrementPerDose": 5
+      "integrityDecrementPerDose": 5,
+      "effectTime": 1
     },
     {
       "id": "BEAR_BEEF",
