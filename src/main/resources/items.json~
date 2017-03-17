@@ -150,29 +150,6 @@
       "integrityDecrementOnHit": 8
     },
     {
-      "id": "WOOD",
-      "type": "Tool",
-      "name": {
-        "singular": "Wood",
-        "plural": "Woods"
-      },
-      "tags": [
-        "WEAPON",
-        "DECOMPOSES",
-        "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
-      ],
-      "integrity": {
-        "current": 200,
-        "maximum": 200
-      },
-      "weight": 0.20,
-      "visibility": "100.00%",
-      "decompositionPeriod": "200 days",
-      "damage": 10,
-      "hitRate": "60.00%",
-      "integrityDecrementOnHit": 8
-    },
-    {
       "id": "APPLE",
       "type": "Food",
       "name": {
@@ -1121,6 +1098,29 @@
       "name": {
         "singular": "Tome of Heal",
         "plural": "Tomes of Heal"
+      },
+      "tags": [
+        "WEAPON",
+        "BOOK"
+      ],
+      "integrity": {
+        "current": 20,
+        "maximum": 20
+      },
+      "weight": 0.6,
+      "visibility": "60.00%",
+      "damage": 6,
+      "hitRate": "70.00%",
+      "integrityDecrementOnHit": 4,
+      "text": "The Heal spell is very useful as it allows the character to restore health very quickly.",
+      "spell": "HEAL"
+    },
+    {
+      "id": "TOME_OF_UPGRADE",
+      "type": "Book",
+      "name": {
+        "singular": "Tome of upgrade",
+        "plural": "Tomes of upgrade"
       },
       "tags": [
         "WEAPON",

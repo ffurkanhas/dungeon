@@ -13,7 +13,8 @@
       "inventoryWeightLimit": 10,
       "inventory": [
         "POTATO",
-        "GOLD"
+        "GOLD",
+        "TOME_OF_UPGRADE"
       ],
       "visibility": "70%",
       "weight": 60.0,

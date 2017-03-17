@@ -1116,6 +1116,29 @@
       "spell": "HEAL"
     },
     {
+      "id": "TOME_OF_UPGRADE",
+      "type": "Book",
+      "name": {
+        "singular": "Tome of upgrade",
+        "plural": "Tomes of upgrade"
+      },
+      "tags": [
+        "WEAPON",
+        "BOOK"
+      ],
+      "integrity": {
+        "current": 20,
+        "maximum": 20
+      },
+      "weight": 0.6,
+      "visibility": "60.00%",
+      "damage": 6,
+      "hitRate": "70.00%",
+      "integrityDecrementOnHit": 4,
+      "text": "The Upgrade spell makes your weapon even more powerful",
+      "spell": "HEAL"
+    },
+    {
       "id": "TOME_OF_FINGER_OF_DEATH",
       "type": "Book",
       "name": {
