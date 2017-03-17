@@ -20,7 +20,8 @@
       "weight": 60.0,
       "health": 50,
       "attack": 4,
-      "attackAlgorithmID": "SIMPLE"
+      "attackAlgorithmID": "SIMPLE",
+      "damageReduction": 0
     },
     {
       "id": "MERCHANT",
@@ -48,6 +49,7 @@
       "health": 55,
       "attack": 4,
       "attackAlgorithmID": "SIMPLE",
+      "damageReduction": 0,
       "weapon": "DAGGER"
     },
     {
@@ -75,6 +77,7 @@
       "health": 40,
       "attack": 4,
       "attackAlgorithmID": "SIMPLE",
+      "damageReduction": 0,
       "weapon": "DAGGER"
     },
     {
@@ -98,6 +101,7 @@
       "weight": 75.0,
       "health": 45,
       "attack": 5,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -113,6 +117,7 @@
       "weight": 0.65,
       "health": 10,
       "attack": 0,
+      "damageReduction": 0,
       "attackAlgorithmID": "CRITTER"
     },
     {
@@ -131,6 +136,7 @@
       "weight": 1.45,
       "health": 10,
       "attack": 0,
+      "damageReduction": 0,
       "attackAlgorithmID": "CRITTER"
     },
     {
@@ -146,6 +152,7 @@
       "weight": 1.35,
       "health": 12,
       "attack": 5,
+      "damageReduction": 0,
       "attackAlgorithmID": "BAT"
     },
     {
@@ -166,6 +173,7 @@
       "weight": 315.0,
       "health": 30,
       "attack": 15,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -185,6 +193,7 @@
       "weight": 90.0,
       "health": 16,
       "attack": 9,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -207,6 +216,7 @@
       "weight": 1000.0,
       "health": 55,
       "attack": 4,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -226,6 +236,7 @@
       "weight": 400.0,
       "health": 26,
       "attack": 17,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -246,6 +257,7 @@
       "weight": 9.0,
       "health": 13,
       "attack": 7,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -265,6 +277,7 @@
       "weight": 1.35,
       "health": 28,
       "attack": 4,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -283,6 +296,7 @@
       "weight": 4.0,
       "health": 18,
       "attack": 0,
+      "damageReduction": 0,
       "attackAlgorithmID": "CRITTER"
     },
     {
@@ -302,6 +316,7 @@
       "weight": 70.0,
       "health": 24,
       "attack": 10,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -320,6 +335,7 @@
       "weight": 8.5,
       "health": 14,
       "attack": 7,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -335,6 +351,7 @@
       "weight": 1.0,
       "health": 23,
       "attack": 9,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -353,6 +370,7 @@
       "weight": 10.0,
       "health": 20,
       "attack": 8,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -373,6 +391,7 @@
       "weight": 50.0,
       "health": 30,
       "attack": 11,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -396,6 +415,7 @@
       "weight": 50.0,
       "health": 30,
       "attack": 11,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -415,6 +435,7 @@
       "weight": 300.0,
       "health": 20,
       "attack": 16,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -439,6 +460,7 @@
       "weight": 100.0,
       "health": 35,
       "attack": 10,
+      "damageReduction": 0,
       "attackAlgorithmID": "ORC",
       "weapon": "ORC_SWORD"
     },
@@ -463,6 +485,7 @@
       "weight": 60.0,
       "health": 28,
       "attack": 8,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE",
       "weapon": "CLUB"
     },
@@ -485,6 +508,7 @@
       "weight": 12.0,
       "health": 30,
       "attack": 10,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE",
       "weapon": "SWORD"
     },
@@ -501,6 +525,7 @@
       "weight": 50.0,
       "health": 18,
       "attack": 10,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -520,6 +545,7 @@
       "weight": 55.0,
       "health": 20,
       "attack": 8,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -540,6 +566,7 @@
       "weight": 60.0,
       "health": 25,
       "attack": 12,
+      "damageReduction": 0,
       "attackAlgorithmID": "SIMPLE"
     },
     {
@@ -560,6 +587,7 @@
       "weight": 50.0,
       "health": 200,
       "attack": 0,
+      "damageReduction": 0,
       "attackAlgorithmID": "DUMMY"
     }
   ]
