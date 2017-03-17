@@ -45,7 +45,6 @@
       "integrityDecrementOnHit": 8
     },
     {
-<<<<<<< HEAD
       "id": "GOLD",
       "type": "Tool",
       "name": {
@@ -174,8 +173,6 @@
       "integrityDecrementOnHit": 8
     },
     {
-=======
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
       "id": "APPLE",
       "type": "Food",
       "name": {
@@ -374,10 +371,6 @@
       "integrityDecrementOnHit": 5,
       "drinkableDoses": 2,
       "drinkableHealing": 10,
-<<<<<<< HEAD
-      "integrityDecrementPerDose": 5
-    },
-=======
       "integrityDecrementPerDose": 5,
       "effectTime" : 1
     },
@@ -404,7 +397,7 @@
 		      "drinkableDoses": 2,
 		      "drinkableHealing": 10,
 		      "integrityDecrementPerDose": 5,
-                      "effectTime": 5
+          "effectTime": 5
 		    },
 		   {
 		      "id": "DAMAGEBOOST_POTION",
@@ -429,9 +422,8 @@
 		      "drinkableDoses": 2,
 		      "drinkableHealing": 10,
 		      "integrityDecrementPerDose": 5,
-                      "effectTime": 8
+          "effectTime": 8
 		    },
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
     {
       "id": "HEALING_DRAUGHT",
       "type": "Potion",
@@ -454,7 +446,8 @@
       "integrityDecrementOnHit": 5,
       "drinkableDoses": 4,
       "drinkableHealing": 10,
-      "integrityDecrementPerDose": 5
+      "integrityDecrementPerDose": 5,
+      "effectTime": 1
     },
     {
       "id": "BEAR_BEEF",
