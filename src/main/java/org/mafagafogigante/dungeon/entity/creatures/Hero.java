@@ -541,6 +541,13 @@ public class Hero extends Creature {
               if (selectedItem.getName().toString().equalsIgnoreCase("Health Potion")) {
                 addHealth(component.getEffect().getHealing());
               }
+              if (selectedItem.getName().toString().equalsIgnoreCase("Reduction Potion")) {
+                regenity = true;
+                regenNumber = component.getEffectTime();
+                effectType = "Reduction Potion";
+                setDamageReduction(50);
+              }
+
               if (selectedItem.getName().toString().equalsIgnoreCase("Boost Potion")) {
                 regenity = true;
                 regenNumber = component.getEffectTime();
@@ -726,6 +733,9 @@ public class Hero extends Creature {
     string.append("Your base attack is ");
     string.append(String.valueOf(getAttack()));
     string.append(".\n");
+    string.append("Your damage reduction is ");
+    string.append(String.valueOf(getDamageReduction()));
+    string.append(".\n");
     if (hasWeapon()) {
       string.append("You are currently equipping ");
       string.append(getWeapon().getQualifiedName());
@@ -794,6 +804,12 @@ public class Hero extends Creature {
         regenNumber --;
         if (regenNumber == 0 && regenity == true) {
           setAttack(-5);
+        }
+      }
+      if (effectType.equals("Reduction Potion")) {
+        regenNumber--;
+        if (regenNumber == 0 && regenity == true) {
+          setDamageReduction(0);
         }
       }
     }

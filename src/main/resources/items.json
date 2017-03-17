@@ -401,6 +401,33 @@
 		      "integrityDecrementPerDose": 5,
           "effectTime": 8
 		    },
+     		    {
+		      "id": "DAMAGE_REDUCTION_POTION",
+		      "type": "Potion",
+		      "name": {
+			"singular": "Reduction Potion"
+		      },
+		      "tags": [
+			"WEAPON",
+			"DRINKABLE",
+			"WEIGHT_PROPORTIONAL_TO_INTEGRITY"
+		      ],
+		      "integrity": {
+			"current": 100,
+			"maximum": 100
+		      },
+		      "weight": 0.1,
+		      "visibility": "95.00%",
+		      "damage": 4,
+		      "hitRate": "50.00%",
+		      "integrityDecrementOnHit": 5,
+		      "drinkableDoses": 2,
+		      "drinkableHealing": 0,
+		      "integrityDecrementPerDose": 5,
+          	      "effectTime": 3
+		    },
+
+
     {
       "id": "HEALING_DRAUGHT",
       "type": "Potion",

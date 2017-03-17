@@ -682,6 +682,10 @@
 	   "id": "DAMAGEBOOST_POTION",
 	   "probability": 0.7
 	},
+	{
+	   "id": "DAMAGE_REDUCTION_POTION",
+	   "probability": 0.7
+	},
         {
           "id": "WOOD",
           "probability": 1
@@ -786,7 +790,11 @@
 	{
 	   "id": "DAMAGEBOOST_POTION",
 	   "probability": 0.7
-			},
+	},
+	{
+	   "id": "DAMAGE_REDUCTION_POTION",
+	   "probability": 0.7
+	},
         {
           "id": "DAGGER_OF_INFINITY",
           "probability": 0.05

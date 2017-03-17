@@ -55,9 +55,6 @@ class SimpleAttackAlgorithm implements AttackAlgorithm {
       if (isCriticalHit) {
         damage *= 2;
       }
-      if (defender.getDamageReduction() > 0) {
-        damage = (int)(damage * (100 - defender.getDamageReduction()) / 100);
-      }
       // Decrement the health of the defender.
       defender.getHealth().decrementBy(damage);
       AttackAlgorithmWriter.writeInflictedDamage(attacker, damage, defender, isCriticalHit);

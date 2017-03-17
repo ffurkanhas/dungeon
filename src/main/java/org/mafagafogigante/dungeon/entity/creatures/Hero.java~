@@ -68,14 +68,10 @@ public class Hero extends Creature {
   private final Spellcaster spellcaster = new HeroSpellcaster(this);
   private final AchievementTracker achievementTracker;
   private final Date dateOfBirth;
-<<<<<<< HEAD
-
-=======
   public boolean regenity = false;
   public int regenNumber = 0;
   public String effectType = "";
   
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
   Hero(CreaturePreset preset, AchievementTracker achievementTracker, Date dateOfBirth) {
     super(preset);
     this.achievementTracker = achievementTracker;
@@ -308,7 +304,6 @@ public class Hero extends Creature {
     if (canSeeAnItem()) {
       List<Item> selectedItems = selectLocationItems(arguments);
       for (Item item : selectedItems) {
-<<<<<<< HEAD
         if (item.getName().toString().equalsIgnoreCase("gold")) {
           Writer.write("You can't pick the gold, you should hint");
         }
@@ -324,8 +319,6 @@ public class Hero extends Creature {
         if (item.getName().toString().equalsIgnoreCase("water")) {
           Writer.write("You can't pick the water, you should hint");
         }
-=======
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
         if (item.getName().toString().equalsIgnoreCase("wood")) {
           Writer.write("You can't pick the wood, you should cut");
         } else {
@@ -388,34 +381,7 @@ public class Hero extends Creature {
       Writer.write("You do not see any item you could pick up.");
     }
   }
-<<<<<<< HEAD
-/** 
-  *Getting hint method for Master item.
-*/
-  public void hint(String[] arguments) {
-List<Item> selectedItems = selectLocationItems(arguments);
-      for (Item item : selectedItems) {
-        if (item.getName().toString().equalsIgnoreCase("fire")) {
-          Writer.write("one");
-        }
-        if (item.getName().toString().equalsIgnoreCase("diamond")) {
-          Writer.write("two");
-        }
-        if (item.getName().toString().equalsIgnoreCase("gold")) {
-          Writer.write("three");
-        }  
-        if (item.getName().toString().equalsIgnoreCase("water")) {
-          Writer.write("four");
-        } 
-        if (item.getName().toString().equalsIgnoreCase("sand")) {
-          Writer.write("five");
-        }
-       }
 
-   }
-=======
-
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
   /**
    * Adds an Item object to the inventory. As a precondition, simulateItemAddition(Item) should return SUCCESSFUL.
    *
@@ -556,9 +522,6 @@ List<Item> selectedItems = selectLocationItems(arguments);
             } else {
               Writer.write("You drank a dose of " + selectedItem.getName() + ".");
             }
-<<<<<<< HEAD
-            addHealth(component.getEffect().getHealing());
-=======
  
             if (regenity == true) {
               regenity = true;
@@ -578,6 +541,13 @@ List<Item> selectedItems = selectLocationItems(arguments);
               if (selectedItem.getName().toString().equalsIgnoreCase("Health Potion")) {
                 addHealth(component.getEffect().getHealing());
               }
+              if (selectedItem.getName().toString().equalsIgnoreCase("Reduction Potion")) {
+                regenity = true;
+                regenNumber = component.getEffectTime();
+                effectType = "Reduction Potion";
+                setDamageReduction(50);
+              }
+
               if (selectedItem.getName().toString().equalsIgnoreCase("Boost Potion")) {
                 regenity = true;
                 regenNumber = component.getEffectTime();
@@ -587,7 +557,6 @@ List<Item> selectedItems = selectLocationItems(arguments);
               }
             }
 
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
           } else {
             Writer.write("This item is depleted.");
           }
@@ -757,15 +726,15 @@ List<Item> selectedItems = selectLocationItems(arguments);
     string.append(" old");
     string.append(".\n");
     string.append("You are ");
-<<<<<<< HEAD
-=======
     string.append("Your health is ");
     string.append(getHealth().toString());
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
     string.append(getHealth().getHealthState().toString().toLowerCase(Locale.ENGLISH));
     string.append(".\n");
     string.append("Your base attack is ");
     string.append(String.valueOf(getAttack()));
+    string.append(".\n");
+    string.append("Your damage reduction is ");
+    string.append(String.valueOf(getDamageReduction()));
     string.append(".\n");
     if (hasWeapon()) {
       string.append("You are currently equipping ");
@@ -826,8 +795,6 @@ List<Item> selectedItems = selectLocationItems(arguments);
    */
   public void walk(String[] arguments) {
     walker.parseHeroWalk(arguments);
-<<<<<<< HEAD
-=======
     if (regenNumber > 0 && regenity == true) {
       if (effectType.equals("Regeneration Potion")) {
         addHealth(11);
@@ -839,11 +806,16 @@ List<Item> selectedItems = selectLocationItems(arguments);
           setAttack(-5);
         }
       }
+      if (effectType.equals("Reduction Potion")) {
+        regenNumber--;
+        if (regenNumber == 0 && regenity == true) {
+          setDamageReduction(0);
+        }
+      }
     }
     if (regenNumber <= 0) {
       regenity = false;
     }
->>>>>>> 054470918018cd26ad5c7c2c8499f52fd1313308
   }
 
   /**

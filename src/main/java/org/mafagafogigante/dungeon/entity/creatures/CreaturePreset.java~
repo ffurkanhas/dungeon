@@ -33,7 +33,6 @@ public final class CreaturePreset implements Preset, Serializable {
   private Id weaponId;
   private int inventoryItemLimit;
   private double inventoryWeightLimit;
-  private int damageReduction;
 
   /**
    * Ensures that an integer value is greater than or equal to a provided minimum. If it is not, returns the minimum and
@@ -88,14 +87,6 @@ public final class CreaturePreset implements Preset, Serializable {
 
   public void setName(Name name) {
     this.name = name;
-  }
-
-  public void setDamageReduction(int damageReduction) {
-    this.damageReduction = damageReduction; 
-  }
- 
-  public int getDamageReduction() {
-    return damageReduction;
   }
 
   public Weight getWeight() {

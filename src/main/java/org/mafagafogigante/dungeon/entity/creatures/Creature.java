@@ -22,6 +22,7 @@ import java.util.List;
 public class Creature extends Entity {
 
   private int attack;
+  private int damageReduction;
   private final AttackAlgorithmId attackAlgorithmId;
   private final TagSet<Tag> tagSet;
   private final CreatureInventory inventory;
@@ -45,6 +46,7 @@ public class Creature extends Entity {
     super(preset);
     health = CreatureHealth.makeCreatureHealth(preset.getHealth(), this);
     attack = preset.getAttack();
+    damageReduction = preset.getDamageReduction();
     tagSet = TagSet.copyTagSet(preset.getTagSet());
     attackAlgorithmId = preset.getAttackAlgorithmId();
     inventory = new CreatureInventory(this, preset.getInventoryItemLimit(), preset.getInventoryWeightLimit());
@@ -66,6 +68,14 @@ public class Creature extends Entity {
 
   public int getAttack() {
     return attack;
+  }
+
+  public void setDamageReduction(int damageReduction) {
+    this.damageReduction = damageReduction; 
+  }
+ 
+  public int getDamageReduction() {
+    return damageReduction;
   }
 
   public CreatureInventory getInventory() {
