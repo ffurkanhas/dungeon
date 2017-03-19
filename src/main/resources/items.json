@@ -1162,8 +1162,8 @@
       "damage": 6,
       "hitRate": "70.00%",
       "integrityDecrementOnHit": 4,
-      "text": "The Upgrade spell makes your weapon even more powerful",
-      "spell": "HEAL"
+      "text": "The Upgrade spell makes your weapon even more powerful if you equip a weapon.",
+      "spell": "UPGRADE"
     },
     {
       "id": "TOME_OF_FINGER_OF_DEATH",

@@ -70,8 +70,6 @@ public final class SpellData {
           Engine.rollDateAndRefresh(SECONDS_TO_CAST_UPGRADE);
           int newDamage = hero.getWeapon().getWeaponComponent().getDamage() + UPGRADE_DAMAGE;
           hero.getWeapon().getWeaponComponent().setDamage(newDamage);
-        } else {
-          Writer.write("You are not equipping anything.");
         }
       }
     });

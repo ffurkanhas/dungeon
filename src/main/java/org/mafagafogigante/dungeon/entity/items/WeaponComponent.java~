@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class WeaponComponent implements Serializable {
 
-  private int damage;
+  private final int damage;
   private final Percentage hitRate;
   private final int integrityDecrementOnHit;
 
