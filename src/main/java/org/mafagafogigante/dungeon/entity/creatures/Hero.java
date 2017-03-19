@@ -389,6 +389,34 @@ public class Hero extends Creature {
       Writer.write("You do not see any item you could pick up.");
     }
   }
+  /**
+  * Create this method for getting hint on subitems.
+   */
+  public void hint(String[] arguments) {
+    Item weapon = null;
+    for (Item item : getInventory().getItems()) {
+      if (item.getQualifiedName().equalsIgnoreCase(arguments[0])) {
+        weapon = item;
+      }
+    }
+    if (getInventory().hasItem(weapon)) {
+      if (weapon.getName().toString().equalsIgnoreCase("gold")) {
+        Writer.write("The hint is -p-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("diamond")) {
+        Writer.write("The hint is -e-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("sand")) {
+        Writer.write("The hint is -n-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("fire")) {
+        Writer.write("The hint is -t-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("water")) {
+        Writer.write("The hint is -a-");
+      } else {
+        Writer.write("You can hint just for subitems");
+      }
+    } else {
+      Writer.write("You should have the subitems");
+    }
+  }
 
   /**
    * Adds an Item object to the inventory. As a precondition, simulateItemAddition(Item) should return SUCCESSFUL.

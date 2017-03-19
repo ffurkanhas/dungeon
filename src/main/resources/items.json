@@ -22,6 +22,27 @@
       "luminosity": "40.00%"
     },
     {
+      "id": "MASTER",
+      "type": "Tool",
+      "name": {
+        "singular": "Master",
+        "plural": "Master"
+      },
+      "tags": [
+        "WEAPON"
+      ],
+      "integrity": {
+        "current": 10,
+        "maximum": 10
+      },
+      "weight": 0.35,
+      "visibility": "90.00%",
+      "damage": 35,
+      "hitRate": "25.00%",
+      "integrityDecrementOnHit": 5,
+      "luminosity": "40.00%"
+    },
+    {
       "id": "WOOD",
       "type": "Tool",
       "name": {
