@@ -5,6 +5,7 @@
 
 # Except exported IDEA settings.
 !idea/settings.jar
+.metadata/
 
 # IDEA
 .idea/
