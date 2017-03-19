@@ -16,9 +16,14 @@ import org.mafagafogigante.dungeon.entity.items.Item;
 import org.mafagafogigante.dungeon.game.DungeonString;
 import org.mafagafogigante.dungeon.game.Engine;
 import org.mafagafogigante.dungeon.game.Game;
+import org.mafagafogigante.dungeon.game.GameState;
+import org.mafagafogigante.dungeon.game.Location;
+import org.mafagafogigante.dungeon.game.LocationPreset;
+import org.mafagafogigante.dungeon.game.LocationPresetStore;
 import org.mafagafogigante.dungeon.game.Name;
 import org.mafagafogigante.dungeon.game.NameFactory;
 import org.mafagafogigante.dungeon.game.PartOfDay;
+import org.mafagafogigante.dungeon.game.Point;
 import org.mafagafogigante.dungeon.game.QuantificationMode;
 import org.mafagafogigante.dungeon.game.Random;
 import org.mafagafogigante.dungeon.game.World;
@@ -36,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -60,6 +66,8 @@ public class Hero extends Creature {
   private static final int SECONDS_TO_MILK_A_CREATURE = 45;
   private static final int SECONDS_TO_READ_EQUIPPED_CLOCK = 4;
   private static final int SECONDS_TO_READ_UNEQUIPPED_CLOCK = 10;
+  private static final int TELEPORT_SUCCESS = 500;
+  private static final int WOOD_COUNT = 2; // How many woods for building home
   private static final double MAXIMUM_HEALTH_THROUGH_REST = 0.6;
   private static final int SECONDS_TO_REGENERATE_FULL_HEALTH = 30000; // 500 minutes (or 8 hours and 20 minutes).
   private static final int MILK_NUTRITION = 12;
@@ -379,6 +387,34 @@ public class Hero extends Creature {
       }
     } else {
       Writer.write("You do not see any item you could pick up.");
+    }
+  }
+  /**
+  * Create this method for getting hint on subitems.
+   */
+  public void hint(String[] arguments) {
+    Item weapon = null;
+    for (Item item : getInventory().getItems()) {
+      if (item.getQualifiedName().equalsIgnoreCase(arguments[0])) {
+        weapon = item;
+      }
+    }
+    if (getInventory().hasItem(weapon)) {
+      if (weapon.getName().toString().equalsIgnoreCase("gold")) {
+        Writer.write("The hint is -p-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("diamond")) {
+        Writer.write("The hint is -e-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("sand")) {
+        Writer.write("The hint is -n-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("fire")) {
+        Writer.write("The hint is -t-");
+      } else if (weapon.getName().toString().equalsIgnoreCase("water")) {
+        Writer.write("The hint is -a-");
+      } else {
+        Writer.write("You can hint just for subitems");
+      }
+    } else {
+      Writer.write("You should have the subitems");
     }
   }
 
@@ -880,6 +916,51 @@ public class Hero extends Creature {
       string.append(".");
     }
     Writer.write(string);
+  }
+
+  /**
+   * Build home if you have enough woods.
+   */
+  public void buildHome() {
+    if ( !getLocation().getName().toString().equalsIgnoreCase("forest") ) {
+      Writer.write("You can just build home when you are at forest.");
+    } else {
+      GameState gameState = Game.getGameState();
+      if (gameState.getHomePosition() != null) {
+        Writer.write("You can have only one house.");
+      } else {
+        int woodCount = 0;
+        for (Item item : getInventory().getItems()) {
+          if (item.getQualifiedName().equals("Wood")) {
+            woodCount++;
+          }
+        }
+        if (woodCount < WOOD_COUNT) {
+          Writer.write("You do not have enough wood. You need " + WOOD_COUNT + " woods. But you have " +
+                  woodCount + " woods.");
+        } else {
+          List<Item> items = new ArrayList<Item>();
+          for (Item item : getInventory().getItems()) {
+            if (item.getQualifiedName().equals("Wood")) {
+              items.add(item);
+            }
+          }
+          for (int i = 0 ; i < WOOD_COUNT ; i++) {
+            getInventory().removeItem(items.get(i));
+          }
+          Writer.write("You used " + WOOD_COUNT + " woods for make house.");
+          World world = gameState.getWorld();
+          Point point = gameState.getHero().getLocation().getPoint();
+          gameState.setHomePosition(point);
+          LocationPresetStore locationPresetStore = LocationPresetStore.getDefaultLocationPresetStore();
+          world.addLocation(new Location(
+                  Random.select(locationPresetStore.getLocationPresetsByType(LocationPreset.Type.HOME)),
+                  world, point), point);
+          Writer.write("Now you have a house.");
+          Engine.refresh();
+        }
+      }
+    }
   }
 
 }

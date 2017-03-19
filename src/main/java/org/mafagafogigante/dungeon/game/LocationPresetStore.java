@@ -107,7 +107,7 @@ public final class LocationPresetStore {
     return idLocationPresetMap.values();
   }
 
-  List<LocationPreset> getLocationPresetsByType(Type type) {
+  public List<LocationPreset> getLocationPresetsByType(Type type) {
     return typeLocationPresetMap.get(type);
   }
 

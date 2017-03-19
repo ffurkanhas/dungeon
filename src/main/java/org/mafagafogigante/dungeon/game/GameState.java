@@ -14,6 +14,7 @@ public class GameState implements Serializable {
   private final Statistics statistics = new Statistics();
   private Hero hero;
   private Point heroPosition;
+  private Point homePosition = null;
 
   private transient boolean saved = false;
 
@@ -61,6 +62,14 @@ public class GameState implements Serializable {
 
   public void setHeroPosition(Point heroPosition) {
     this.heroPosition = heroPosition;
+  }
+
+  public void setHomePosition(Point homePosition) {
+    this.homePosition = homePosition;
+  }
+
+  public Point getHomePosition() {
+    return homePosition;
   }
 
   public boolean isSaved() {
