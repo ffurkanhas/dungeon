@@ -82,10 +82,10 @@ final class CommandSets {
         Game.getGameState().getHero().printAge();
       }
     });
-    commandSet.addCommand(new Command("build", "Builds house if you have enough wood.") {
+    commandSet.addCommand(new Command("build", "Builds house if you have enough wood") {
       @Override
       public void execute(@NotNull String[] arguments) {
-        Game.getGameState().getHero().walk(arguments);
+        Game.getGameState().getHero().buildHome();
       }
     });
     commandSet.addCommand(new Command("cast", "Casts a spell.") {
@@ -95,12 +95,6 @@ final class CommandSets {
       }
     });
     commandSet.addCommand(new Command("cut", "Cuts the wood when you are at forest") {
-      @Override
-      public void execute(@NotNull String[] arguments) {
-        Game.getGameState().getHero().cut(arguments);
-      }
-    });
-    commandSet.addCommand(new Command("hint", "Hint with using subitems for Master") {
       @Override
       public void execute(@NotNull String[] arguments) {
         Game.getGameState().getHero().cut(arguments);
@@ -146,6 +140,12 @@ final class CommandSets {
       @Override
       public void execute(@NotNull String[] arguments) {
         Game.getGameState().getHero().walk(arguments);
+      }
+    });
+    commandSet.addCommand(new Command("hint", "Hint with using subitems for Master") {
+      @Override
+      public void execute(@NotNull String[] arguments) {
+        Game.getGameState().getHero().cut(arguments);
       }
     });
     commandSet.addCommand(new Command("items", "Lists the items in the character's inventory.") {
