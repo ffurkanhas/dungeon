@@ -15,7 +15,10 @@
         "POTATO",
         "TOME_OF_UPGRADE",
         "GOLD",
-        "SAND"
+        "SAND",
+        "DIAMOND",
+        "WATER",
+        "FIRE"
       ],
       "visibility": "70%",
       "weight": 60.0,

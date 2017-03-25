@@ -142,10 +142,10 @@ final class CommandSets {
         Game.getGameState().getHero().walk(arguments);
       }
     });
-    commandSet.addCommand(new Command("hint", "Hint with using subitems for Master") {
+    commandSet.addCommand(new Command("hints", "Hint with using subitems for Master") {
       @Override
       public void execute(@NotNull String[] arguments) {
-        Game.getGameState().getHero().cut(arguments);
+        Game.getGameState().getHero().hints(arguments);
       }
     });
     commandSet.addCommand(new Command("items", "Lists the items in the character's inventory.") {

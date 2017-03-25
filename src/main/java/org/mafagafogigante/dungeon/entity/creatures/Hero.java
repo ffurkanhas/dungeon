@@ -41,10 +41,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
+import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+
 
 /**
  * Hero class that defines the creature that the player controls.
@@ -79,11 +81,21 @@ public class Hero extends Creature {
   public boolean regenity = false;
   public int regenNumber = 0;
   public String effectType = "";
-  
+  public ArrayList<String> word = new ArrayList<String>();
+  public String key;
+  public final int random;
+
   Hero(CreaturePreset preset, AchievementTracker achievementTracker, Date dateOfBirth) {
     super(preset);
     this.achievementTracker = achievementTracker;
     this.dateOfBirth = dateOfBirth;
+    word.add("penta");
+    word.add("combo");
+    word.add("skill");
+    word.add("books");
+    word.add("dunge");
+    this.random = (int)(Math.random() * word.size());
+    this.key = word.get(random);
   }
 
   public Observer getObserver() {
@@ -392,7 +404,7 @@ public class Hero extends Creature {
   /**
   * Create this method for getting hint on subitems.
    */
-  public void hint(String[] arguments) {
+  public void hints(String[] arguments) {
     Item weapon = null;
     for (Item item : getInventory().getItems()) {
       if (item.getQualifiedName().equalsIgnoreCase(arguments[0])) {
@@ -401,15 +413,20 @@ public class Hero extends Creature {
     }
     if (getInventory().hasItem(weapon)) {
       if (weapon.getName().toString().equalsIgnoreCase("gold")) {
-        Writer.write("The hint is -p-");
+        String wrd = "The hint is : " + key.charAt(0);
+        Writer.write(wrd);
       } else if (weapon.getName().toString().equalsIgnoreCase("diamond")) {
-        Writer.write("The hint is -e-");
+        String wrd = "The hint is : " + key.charAt(1);
+        Writer.write(wrd);
       } else if (weapon.getName().toString().equalsIgnoreCase("sand")) {
-        Writer.write("The hint is -n-");
+        String wrd = "The hint is : " + key.charAt(2);
+        Writer.write(wrd);
       } else if (weapon.getName().toString().equalsIgnoreCase("fire")) {
-        Writer.write("The hint is -t-");
+        String wrd = "The hint is : " + key.charAt(3);
+        Writer.write(wrd);
       } else if (weapon.getName().toString().equalsIgnoreCase("water")) {
-        Writer.write("The hint is -a-");
+        String wrd = "The hint is : " + key.charAt(4);
+        Writer.write(wrd);
       } else {
         Writer.write("You can hint just for subitems");
       }
