@@ -980,4 +980,28 @@ public class Hero extends Creature {
     }
   }
 
+  /**
+   *  Teleport to home.
+   */
+  public void goHome() {
+    GameState gameState = Game.getGameState();
+    Point home = gameState.getHomePosition();
+    if (home == null) {
+      Writer.write("You do not have any house");
+    } else {
+      World world = gameState.getWorld();
+      Hero hero = gameState.getHero();
+      if (hero.getLocation().getPoint() == home) {
+        Writer.write("You are at home.");
+      } else {
+        Engine.rollDateAndRefresh(TELEPORT_SUCCESS); // Teleport spent time
+        hero.getLocation().removeCreature(hero);
+        world.getLocation(home).addCreature(hero);
+        hero.setLocation(world.getLocation(home));
+        gameState.setHeroPosition(home);
+        Engine.refresh(); // Refresh game
+        hero.look();
+      }
+    }
+  }
 }
