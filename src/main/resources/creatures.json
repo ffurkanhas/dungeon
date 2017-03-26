@@ -171,7 +171,8 @@
       "drops": [
         ["BEAR_BEEF", 1.0],
         ["BEAR_BEEF", 0.9],
-        ["BEAR_BEEF", 0.8]
+        ["BEAR_BEEF", 0.8],
+        ["TOME_OF_UPGRADE", 0.6]
       ],
       "visibility": "70%",
       "weight": 315.0,
@@ -368,7 +369,8 @@
         "CORPSE"
       ],
       "drops": [
-        ["SPIDER_VENOM_GLAND", 0.2]
+        ["SPIDER_VENOM_GLAND", 0.2],
+        ["TOME_OF_UPGRADE", 0.6]
       ],
       "visibility": "70%",
       "weight": 10.0,

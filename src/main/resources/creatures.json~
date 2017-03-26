@@ -15,7 +15,10 @@
         "POTATO",
         "TOME_OF_UPGRADE",
         "GOLD",
-        "SAND"
+        "SAND",
+        "DIAMOND",
+        "WATER",
+        "FIRE"
       ],
       "visibility": "70%",
       "weight": 60.0,
@@ -168,7 +171,8 @@
       "drops": [
         ["BEAR_BEEF", 1.0],
         ["BEAR_BEEF", 0.9],
-        ["BEAR_BEEF", 0.8]
+        ["BEAR_BEEF", 0.8],
+        ["TOME_OF_UPGRADE", 0.6]
       ],
       "visibility": "70%",
       "weight": 315.0,

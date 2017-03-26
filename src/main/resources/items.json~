@@ -22,6 +22,27 @@
       "luminosity": "40.00%"
     },
     {
+      "id": "MASTER",
+      "type": "Tool",
+      "name": {
+        "singular": "Master",
+        "plural": "Master"
+      },
+      "tags": [
+        "WEAPON"
+      ],
+      "integrity": {
+        "current": 10,
+        "maximum": 10
+      },
+      "weight": 0.35,
+      "visibility": "90.00%",
+      "damage": 35,
+      "hitRate": "25.00%",
+      "integrityDecrementOnHit": 5,
+      "luminosity": "40.00%"
+    },
+    {
       "id": "WOOD",
       "type": "Tool",
       "name": {
@@ -736,14 +757,15 @@
       },
       "tags": [
         "WEAPON",
-        "REPAIRABLE"
+        "REPAIRABLE",
+        "UPGRADEABLE"
       ],
       "integrity": {
         "current": 85,
         "maximum": 85
       },
       "weight": 2,
-      "visibility": "70.00%",
+      "visibility": "100.00%",
       "damage": 18,
       "hitRate": "80.00%",
       "integrityDecrementOnHit": 1
@@ -756,7 +778,8 @@
       },
       "tags": [
         "WEAPON",
-        "REPAIRABLE"
+        "REPAIRABLE",
+        "UPGRADEABLE"
       ],
       "integrity": {
         "current": 90,
@@ -1162,7 +1185,7 @@
       "damage": 6,
       "hitRate": "70.00%",
       "integrityDecrementOnHit": 4,
-      "text": "The Upgrade spell makes your weapon even more powerful",
+      "text": "The Upgrade spell makes your weapon even more powerful if you equip a weapon. But be careful. Your item might explode when you try to upgrade.",
       "spell": "UPGRADE"
     },
     {

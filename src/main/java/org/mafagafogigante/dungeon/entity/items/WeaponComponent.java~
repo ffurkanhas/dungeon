@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class WeaponComponent implements Serializable {
 
-  private final int damage;
+  private int damage;
   private final Percentage hitRate;
   private final int integrityDecrementOnHit;
 
@@ -31,6 +31,13 @@ public class WeaponComponent implements Serializable {
   public void setDamage(int damage) {
     this.damage = damage;
   } 
+  /**
+   * Remove item method is added.
+   */
+  public void removeItem(Item item) {
+    items.remove(item);
+    item.setInventory(null);
+  }
 
   public Percentage getHitRate() {
     return hitRate;

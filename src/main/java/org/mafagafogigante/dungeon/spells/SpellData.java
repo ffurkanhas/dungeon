@@ -1,5 +1,6 @@
 package org.mafagafogigante.dungeon.spells;
 
+
 import org.mafagafogigante.dungeon.entity.creatures.Creature;
 import org.mafagafogigante.dungeon.entity.creatures.Hero;
 import org.mafagafogigante.dungeon.entity.creatures.HeroUtils;
@@ -63,17 +64,30 @@ public final class SpellData {
     putSpell(new Spell("UPGRADE", "Upgrade") {
       private static final int UPGRADE_DAMAGE = 8;
       private static final int SECONDS_TO_CAST_UPGRADE = 15;
+      private int count = 0;
+      private int number;
       
       @Override
       public void operate(Hero hero, String[] targetMatcher) {
         if (targetMatcher.length == 0 && hero.getWeapon() != null) {
-          Engine.rollDateAndRefresh(SECONDS_TO_CAST_UPGRADE);
-          int newDamage = hero.getWeapon().getWeaponComponent().getDamage() + UPGRADE_DAMAGE;
-          hero.getWeapon().getWeaponComponent().setDamage(newDamage);
+          count++;
+          number = (int) Math.floor(Math.random() * 101);
+          if ((count == 1 && number <= 80) || (count == 2 && number <= 60) || (count == 3 && number <= 40)) {
+            Engine.rollDateAndRefresh(SECONDS_TO_CAST_UPGRADE);
+            int newDamage = hero.getWeapon().getWeaponComponent().getDamage() + UPGRADE_DAMAGE;
+            hero.getWeapon().getWeaponComponent().setDamage(newDamage);
+            Writer.write("Your weapon damage is now boosted by + " + UPGRADE_DAMAGE);
+            Writer.write("Your new weapon damage is now " + newDamage);
+            Writer.write("You upgraded your " + hero.getWeapon().getName() + " " + count  + " time. your limit is 3");
+          } else {
+            hero.getInventory().removeItem(hero.getWeapon());
+            Writer.write("Opss. You pushed your limit. your weapon destroyed.");
+            count = 0;
+          }           
         } else {
           Writer.write("You are not equipping anything.");
         }
-      }
+      } 
     });
     putSpell(new Spell("REPAIR", "Repair") {
       private static final int REPAIR_VALUE = 50;
