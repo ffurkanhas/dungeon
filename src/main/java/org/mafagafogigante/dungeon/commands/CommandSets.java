@@ -82,6 +82,12 @@ final class CommandSets {
         Game.getGameState().getHero().printAge();
       }
     });
+    commandSet.addCommand(new Command("base", "Teleport to the home") {
+      @Override
+      public void execute(@NotNull String[] arguments) {
+        Game.getGameState().getHero().goHome();
+      }
+    });
     commandSet.addCommand(new Command("build", "Builds house if you have enough wood") {
       @Override
       public void execute(@NotNull String[] arguments) {
