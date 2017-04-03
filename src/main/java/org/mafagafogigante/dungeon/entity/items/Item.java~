@@ -23,6 +23,7 @@ public final class Item extends Entity {
   private DrinkableComponent drinkableComponent;
   private ClockComponent clockComponent;
   private BookComponent bookComponent;
+  private boolean uniqueControl;
   /* The Inventory this Item is in. Should be null whenever this Item is not in an Inventory. */
   private BaseInventory inventory;
 
@@ -40,7 +41,8 @@ public final class Item extends Entity {
     integrity = ItemIntegrity.makeItemIntegrity(preset.getIntegrity(), this);
 
     lightSource = new LightSource(preset.getLuminosity());
-
+    
+    uniqueControl = preset.isUnique();
     if (hasTag(Tag.WEAPON)) {
       int damage = preset.getDamage();
       Percentage hitRate = preset.getHitRate();
@@ -150,6 +152,10 @@ public final class Item extends Entity {
     integrity.decrementBy(foodComponent.getIntegrityDecrementOnEat());
   }
 
+  public boolean getUniqueControl() {
+   return uniqueControl;
+  }
+
   public void decrementIntegrityByDrinking() {
     integrity.decrementBy(drinkableComponent.getIntegrityDecrementPerDose());
   }
@@ -179,7 +185,6 @@ public final class Item extends Entity {
     return getName().toString();
   }
 
-  public enum Tag {WEAPON, FOOD, DRINKABLE, CLOCK, BOOK, DECOMPOSES, REPAIRABLE, WEIGHT_PROPORTIONAL_TO_INTEGRITY,WOOD, 
-  UPGRADEABLE}
+  public enum Tag {WEAPON, FOOD, DRINKABLE, CLOCK, BOOK, DECOMPOSES, REPAIRABLE, WEIGHT_PROPORTIONAL_TO_INTEGRITY,WOOD}
 
 }

@@ -369,7 +369,8 @@
         "CORPSE"
       ],
       "drops": [
-        ["SPIDER_VENOM_GLAND", 0.2]
+        ["SPIDER_VENOM_GLAND", 0.2],
+        ["TOME_OF_UPGRADE", 0.6]
       ],
       "visibility": "70%",
       "weight": 10.0,

@@ -18,7 +18,8 @@
         "SAND",
         "DIAMOND",
         "WATER",
-        "FIRE"
+        "FIRE",
+        "DAGGER_OF_INFINITY"
       ],
       "visibility": "70%",
       "weight": 60.0,

@@ -69,7 +69,7 @@ public final class SpellData {
       
       @Override
       public void operate(Hero hero, String[] targetMatcher) {
-        if (targetMatcher.length == 0 && hero.getWeapon() != null) {
+        if (targetMatcher.length == 0 && hero.getWeapon() != null && hero.getWeapon().getUniqueControl() == true) {
           count++;
           number = (int) Math.floor(Math.random() * 101);
           if ((count == 1 && number <= 80) || (count == 2 && number <= 60) || (count == 3 && number <= 40)) {
@@ -79,13 +79,19 @@ public final class SpellData {
             Writer.write("Your weapon damage is now boosted by + " + UPGRADE_DAMAGE);
             Writer.write("Your new weapon damage is now " + newDamage);
             Writer.write("You upgraded your " + hero.getWeapon().getName() + " " + count  + " time. your limit is 3");
+            
           } else {
             hero.getInventory().removeItem(hero.getWeapon());
             Writer.write("Opss. You pushed your limit. your weapon destroyed.");
             count = 0;
           }           
         } else {
-          Writer.write("You are not equipping anything.");
+            if (hero.getWeapon() != null && hero.getWeapon().getUniqueControl() == false) {
+              Writer.write("You cant upgrade because your weapon is not unique.");
+            }
+            if (hero.getWeapon() == null) {
+              Writer.write("You are not equipping anything.");
+            }   
         }
       } 
     });
