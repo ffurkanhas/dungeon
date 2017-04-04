@@ -160,6 +160,12 @@ final class CommandSets {
         Game.getGameState().getHero().writeInventory();
       }
     });
+    commandSet.addCommand(new Command("key", "It check that you find key or not.") {
+      @Override
+      public void execute(@NotNull String[] arguments) {
+        Game.getGameState().getHero().key(arguments);
+      }
+    });
     commandSet.addCommand(new Command("kill", "Attacks the target chosen by the player.") {
       @Override
       public void execute(@NotNull String[] arguments) {

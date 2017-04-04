@@ -41,11 +41,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.Math;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 
 /**
@@ -84,16 +90,14 @@ public class Hero extends Creature {
   public ArrayList<String> word = new ArrayList<String>();
   public String key;
   public final int random;
+  public boolean control = false;
+  public final Words keyList = new Words();
 
   Hero(CreaturePreset preset, AchievementTracker achievementTracker, Date dateOfBirth) {
     super(preset);
     this.achievementTracker = achievementTracker;
     this.dateOfBirth = dateOfBirth;
-    word.add("penta");
-    word.add("combo");
-    word.add("skill");
-    word.add("books");
-    word.add("dunge");
+    this.word = keyList.wrd;
     this.random = (int)(Math.random() * word.size());
     this.key = word.get(random);
   }
@@ -121,6 +125,18 @@ public class Hero extends Creature {
     }
   }
 
+  /**
+   * It checks the keyword that is true or not.
+   */
+  public void key(String[] arguments) {
+    if (key.equalsIgnoreCase(arguments[0])) {
+      Writer.write("Congratulations ! You have the key !");
+      Writer.write("Now you can equip Master !!!");
+      this.control = true;
+    } else {
+      Writer.write("You should try again !");
+    }
+  }
   /**
    * Rests until the hero is considered to be rested.
    */
@@ -324,21 +340,6 @@ public class Hero extends Creature {
     if (canSeeAnItem()) {
       List<Item> selectedItems = selectLocationItems(arguments);
       for (Item item : selectedItems) {
-        if (item.getName().toString().equalsIgnoreCase("gold")) {
-          Writer.write("You can't pick the gold, you should hint");
-        }
-        if (item.getName().toString().equalsIgnoreCase("diamond")) {
-          Writer.write("You can't pick the diamond, you should hint");
-        }
-        if (item.getName().toString().equalsIgnoreCase("sand")) {
-          Writer.write("You can't pick the sand, you should hint");
-        }
-        if (item.getName().toString().equalsIgnoreCase("fire")) {
-          Writer.write("You can't pick the fire, you should hint");
-        }
-        if (item.getName().toString().equalsIgnoreCase("water")) {
-          Writer.write("You can't pick the water, you should hint");
-        }
         if (item.getName().toString().equalsIgnoreCase("wood")) {
           Writer.write("You can't pick the wood, you should cut");
         } else {
@@ -735,6 +736,45 @@ public class Hero extends Creature {
         return;
       } else {
         unequipWeapon();
+      }
+    }
+    if (weapon.getQualifiedName().equalsIgnoreCase("master")) {
+      Item gold = null;
+      Item sand = null;
+      Item diamond = null;
+      Item fire = null;
+      Item water = null;
+      for (Item item : getInventory().getItems()) {
+        if (item.getQualifiedName().equalsIgnoreCase("gold")) {
+          gold = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("sand")) {
+          sand = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("diamond")) {
+          diamond = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("water")) {
+          water = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("fire")) {
+          fire = item;
+        }
+      }
+      if (gold != null && water != null && sand != null && diamond != null && fire != null && control) {
+        setWeapon(weapon);
+        DungeonString string = new DungeonString();
+        string.append(getName() + "equipped " + weapon.getQualifiedName() + ".");
+        string.append(" " + "Your total damage is now " + getTotalDamage() + ".");
+        Writer.write(string);
+        getInventory().removeItem(diamond);
+        getInventory().removeItem(sand);
+        getInventory().removeItem(water);
+        getInventory().removeItem(fire);
+        getInventory().removeItem(gold);
+      } else {
+        Writer.write("If you want to equip Master,you have to know key or you have to collect all subitems.");
+        return;
       }
     }
     Engine.rollDateAndRefresh(SECONDS_TO_EQUIP);

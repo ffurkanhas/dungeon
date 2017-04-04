@@ -254,6 +254,14 @@
             "maximum": 2
           },
           "delay": 4
+        },
+        {
+          "id": "EVIL",
+          "population": {
+            "minimum": 2,
+            "maximum": 4
+          },
+          "delay": 4
         }
       ],
       "items": [

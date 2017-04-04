@@ -14,12 +14,7 @@
       "inventory": [
         "POTATO",
         "TOME_OF_UPGRADE",
-        "GOLD",
-        "SAND",
-        "DIAMOND",
-        "WATER",
-        "FIRE",
-        "DAGGER_OF_INFINITY"
+        "MASTER"
       ],
       "visibility": "70%",
       "weight": 60.0,
@@ -414,9 +409,9 @@
       "drops": [
         ["GOLD", 0.3],
         ["DIAMOND", 0.3],
-	["SAND", 0.3],
-	["FIRE", 0.3],
-	["WATER", 0.3]
+	    ["SAND", 0.3],
+	    ["FIRE", 0.3],
+	    ["WATER", 0.3]
       ],
       "visibility": "100%",
       "weight": 50.0,

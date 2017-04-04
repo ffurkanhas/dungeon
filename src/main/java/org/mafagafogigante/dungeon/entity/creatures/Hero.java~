@@ -16,9 +16,14 @@ import org.mafagafogigante.dungeon.entity.items.Item;
 import org.mafagafogigante.dungeon.game.DungeonString;
 import org.mafagafogigante.dungeon.game.Engine;
 import org.mafagafogigante.dungeon.game.Game;
+import org.mafagafogigante.dungeon.game.GameState;
+import org.mafagafogigante.dungeon.game.Location;
+import org.mafagafogigante.dungeon.game.LocationPreset;
+import org.mafagafogigante.dungeon.game.LocationPresetStore;
 import org.mafagafogigante.dungeon.game.Name;
 import org.mafagafogigante.dungeon.game.NameFactory;
 import org.mafagafogigante.dungeon.game.PartOfDay;
+import org.mafagafogigante.dungeon.game.Point;
 import org.mafagafogigante.dungeon.game.QuantificationMode;
 import org.mafagafogigante.dungeon.game.Random;
 import org.mafagafogigante.dungeon.game.World;
@@ -36,9 +41,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.Math;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
+
 
 /**
  * Hero class that defines the creature that the player controls.
@@ -60,6 +74,8 @@ public class Hero extends Creature {
   private static final int SECONDS_TO_MILK_A_CREATURE = 45;
   private static final int SECONDS_TO_READ_EQUIPPED_CLOCK = 4;
   private static final int SECONDS_TO_READ_UNEQUIPPED_CLOCK = 10;
+  private static final int TELEPORT_SUCCESS = 500;
+  private static final int WOOD_COUNT = 2; // How many woods for building home
   private static final double MAXIMUM_HEALTH_THROUGH_REST = 0.6;
   private static final int SECONDS_TO_REGENERATE_FULL_HEALTH = 30000; // 500 minutes (or 8 hours and 20 minutes).
   private static final int MILK_NUTRITION = 12;
@@ -71,11 +87,21 @@ public class Hero extends Creature {
   public boolean regenity = false;
   public int regenNumber = 0;
   public String effectType = "";
-  
+  public ArrayList<String> word = new ArrayList<String>();
+  public String key;
+  public final int random;
+  public boolean control = false;
+
   Hero(CreaturePreset preset, AchievementTracker achievementTracker, Date dateOfBirth) {
     super(preset);
     this.achievementTracker = achievementTracker;
     this.dateOfBirth = dateOfBirth;
+    word.add("penta");
+    word.add("skill");
+    word.add("skins");
+    word.add("gamer");
+    this.random = (int)(Math.random() * word.size());
+    this.key = word.get(random);
   }
 
   public Observer getObserver() {
@@ -101,6 +127,18 @@ public class Hero extends Creature {
     }
   }
 
+  /**
+   * It checks the keyword that is true or not.
+   */
+  public void key(String[] arguments) {
+    if (key.equalsIgnoreCase(arguments[0])) {
+      Writer.write("Congratulations ! You have the key !");
+      Writer.write("Now you can equip Master !!!");
+      this.control = true;
+    } else {
+      Writer.write("You should try again !");
+    }
+  }
   /**
    * Rests until the hero is considered to be rested.
    */
@@ -379,6 +417,39 @@ public class Hero extends Creature {
       }
     } else {
       Writer.write("You do not see any item you could pick up.");
+    }
+  }
+  /**
+  * Create this method for getting hint on subitems.
+   */
+  public void hints(String[] arguments) {
+    Item weapon = null;
+    for (Item item : getInventory().getItems()) {
+      if (item.getQualifiedName().equalsIgnoreCase(arguments[0])) {
+        weapon = item;
+      }
+    }
+    if (getInventory().hasItem(weapon)) {
+      if (weapon.getName().toString().equalsIgnoreCase("gold")) {
+        String wrd = "The hint is : " + key.charAt(0);
+        Writer.write(wrd);
+      } else if (weapon.getName().toString().equalsIgnoreCase("diamond")) {
+        String wrd = "The hint is : " + key.charAt(1);
+        Writer.write(wrd);
+      } else if (weapon.getName().toString().equalsIgnoreCase("sand")) {
+        String wrd = "The hint is : " + key.charAt(2);
+        Writer.write(wrd);
+      } else if (weapon.getName().toString().equalsIgnoreCase("fire")) {
+        String wrd = "The hint is : " + key.charAt(3);
+        Writer.write(wrd);
+      } else if (weapon.getName().toString().equalsIgnoreCase("water")) {
+        String wrd = "The hint is : " + key.charAt(4);
+        Writer.write(wrd);
+      } else {
+        Writer.write("You can hint just for subitems");
+      }
+    } else {
+      Writer.write("You should have the subitems");
     }
   }
 
@@ -684,6 +755,39 @@ public class Hero extends Creature {
         unequipWeapon();
       }
     }
+    if (weapon.getQualifiedName().toString().equalsIgnoreCase("master")) {
+      Item gold = null;
+      Item sand = null;
+      Item diamond = null;
+      Item fire = null;
+      Item water = null;
+      for (Item item : getInventory().getItems()) {
+        if (item.getQualifiedName().equalsIgnoreCase("gold")) {
+          gold = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("sand")) {
+          sand = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("diamond")) {
+          diamond = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("water")) {
+          water = item;
+        }
+        if (item.getQualifiedName().equalsIgnoreCase("fire")) {
+          fire = item;
+        }
+      }
+      if (gold != null && water != null && sand != null && diamond != null && fire != null && control != false) {
+        setWeapon(weapon);
+        DungeonString string = new DungeonString();
+        string.append(getName() + "equipped " + weapon.getQualifiedName() + ".");
+        string.append(" " + "Your total damage is now " + getTotalDamage() + ".");
+        Writer.write(string);
+      } else {
+        Writer.write("If you want to equip Master,you have to know key or you have to collect all subitems.");
+      }
+    }
     Engine.rollDateAndRefresh(SECONDS_TO_EQUIP);
     if (getInventory().hasItem(weapon)) {
       setWeapon(weapon);
@@ -880,6 +984,51 @@ public class Hero extends Creature {
       string.append(".");
     }
     Writer.write(string);
+  }
+
+  /**
+   * Build home if you have enough woods.
+   */
+  public void buildHome() {
+    if ( !getLocation().getName().toString().equalsIgnoreCase("forest") ) {
+      Writer.write("You can just build home when you are at forest.");
+    } else {
+      GameState gameState = Game.getGameState();
+      if (gameState.getHomePosition() != null) {
+        Writer.write("You can have only one house.");
+      } else {
+        int woodCount = 0;
+        for (Item item : getInventory().getItems()) {
+          if (item.getQualifiedName().equals("Wood")) {
+            woodCount++;
+          }
+        }
+        if (woodCount < WOOD_COUNT) {
+          Writer.write("You do not have enough wood. You need " + WOOD_COUNT + " woods. But you have " +
+                  woodCount + " woods.");
+        } else {
+          List<Item> items = new ArrayList<Item>();
+          for (Item item : getInventory().getItems()) {
+            if (item.getQualifiedName().equals("Wood")) {
+              items.add(item);
+            }
+          }
+          for (int i = 0 ; i < WOOD_COUNT ; i++) {
+            getInventory().removeItem(items.get(i));
+          }
+          Writer.write("You used " + WOOD_COUNT + " woods for make house.");
+          World world = gameState.getWorld();
+          Point point = gameState.getHero().getLocation().getPoint();
+          gameState.setHomePosition(point);
+          LocationPresetStore locationPresetStore = LocationPresetStore.getDefaultLocationPresetStore();
+          world.addLocation(new Location(
+                  Random.select(locationPresetStore.getLocationPresetsByType(LocationPreset.Type.HOME)),
+                  world, point), point);
+          Writer.write("Now you have a house.");
+          Engine.refresh();
+        }
+      }
+    }
   }
 
 }

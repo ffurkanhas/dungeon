@@ -31,6 +31,7 @@
       "tags": [
         "WEAPON"
       ],
+      "unique": true,
       "integrity": {
         "current": 10,
         "maximum": 10
@@ -81,7 +82,7 @@
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -102,7 +103,7 @@
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 10,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -123,7 +124,7 @@
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -144,7 +145,7 @@
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -165,7 +166,7 @@
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
