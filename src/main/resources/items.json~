@@ -31,6 +31,7 @@
       "tags": [
         "WEAPON"
       ],
+      "unique": true,
       "integrity": {
         "current": 10,
         "maximum": 10
@@ -76,12 +77,13 @@
         "WEAPON",
         "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
       ],
+      "unique": true,
       "integrity": {
         "current": 200,
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -97,12 +99,13 @@
         "WEAPON",
         "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
       ],
+      "unique": true,
       "integrity": {
         "current": 200,
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 10,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -118,12 +121,13 @@
         "WEAPON",
         "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
       ],
+      "unique": true,
       "integrity": {
         "current": 200,
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -139,12 +143,13 @@
         "WEAPON",
         "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
       ],
+      "unique": true,
       "integrity": {
         "current": 200,
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -160,12 +165,13 @@
         "WEAPON",
         "WEIGHT_PROPORTIONAL_TO_INTEGRITY"
       ],
+      "unique": true,
       "integrity": {
         "current": 200,
         "maximum": 200
       },
       "weight": 0.10,
-      "visibility": "25.00%",
+      "visibility": "100.00%",
       "damage": 1,
       "hitRate": "60.00%",
       "integrityDecrementOnHit": 8
@@ -757,15 +763,14 @@
       },
       "tags": [
         "WEAPON",
-        "REPAIRABLE",
-        "UPGRADEABLE"
+        "REPAIRABLE"
       ],
       "integrity": {
         "current": 85,
         "maximum": 85
       },
       "weight": 2,
-      "visibility": "100.00%",
+      "visibility": "70.00%",
       "damage": 18,
       "hitRate": "80.00%",
       "integrityDecrementOnHit": 1
@@ -778,8 +783,7 @@
       },
       "tags": [
         "WEAPON",
-        "REPAIRABLE",
-        "UPGRADEABLE"
+        "REPAIRABLE"
       ],
       "integrity": {
         "current": 90,

@@ -652,6 +652,14 @@
           "delay": 2
         },
         {
+          "id": "EVIL",
+          "population": {
+            "minimum": 2,
+            "maximum": 8
+          },
+          "delay": 2
+        },
+        {
           "id": "RABBIT",
           "population": {
             "minimum": 4,
